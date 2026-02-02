@@ -31,7 +31,7 @@ def edit_element_ref_pv(tags):
     if tags.get(gensource) != (solar):
         print("source not matching nothing done")
         return tags
-    if tags.get(genmethod) != (photovoltaic):
+    if tags.get(genmethod) != (pv):
         print("method not matching nothing done")
         return tags
     if tags.get(ref) and re.match(r'E[-0-9a-zA-Z]{32}$', tags.get(ref)) and not refEEG in tags:
