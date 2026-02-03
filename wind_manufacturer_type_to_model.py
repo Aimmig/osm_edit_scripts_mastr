@@ -8,7 +8,8 @@ def main():
 [out:xml][timeout:25000];
 area["name"="Deutschland"]->.boundaryarea;
 (
-  nwr(area.boundaryarea)["ref"~"^E[-0-9a-zA-Z]{32}"]["generator:source"="wind"]["generator:method"="wind_turbine"];
+    nwr(area.boundaryarea)["manufacturer:type"]["generator:source"="wind"];
+    nwr(area.boundaryarea)["manufacturer:type"]["generator:method"="wind_turbine"];
 );
 out body;
 >;
@@ -16,10 +17,10 @@ out skel qt;
 """,
         cache_folder_filepath='/tmp',
         is_in_manual_mode=True,
-        changeset_comment='Windanlagen in DE: ref -> ref:EEG, wenn Exx...xx',
+        changeset_comment='Windanlagen in DE: manufacturer:type -> model',
         discussion_url='https://community.openstreetmap.org/t/import-marktstammdatenregister-data-for-wind-power-plants/140622/10',
-        osm_wiki_documentation_page='https://wiki.openstreetmap.org/wiki/Mechanical_Edits/onterof_mastr_bot/migrate_some_ref_to_ref_eeg_solar_wind_germany',
-        edit_element_function=edit_element_ref_wind,
+        osm_wiki_documentation_page='https://wiki.openstreetmap.org/wiki/Mechanical_Edits/onterof_mastr_bot/TO_DO',
+        edit_element_function=edit_element_man,
     )
 
 main()

@@ -28,7 +28,7 @@ def main():
     print("TESTING ref -> ref:EEG -----------")
     for x in create_test_list():
         print(x)
-        y = edit_element_ref(x)
+        y = edit_element_ref_pv(x)
         print(y)
         print("----")
     print("\n\n\n")
