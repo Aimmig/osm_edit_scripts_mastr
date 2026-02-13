@@ -2,7 +2,9 @@ import re
 import inspect
 
 gensource = 'generator:source'
+plantsource = 'plant:source'
 genmethod = 'generator:method'
+plantmethod = 'plant:method'
 ref = 'ref'
 refEEG = 'ref:EEG'
 wind = "wind"
@@ -28,10 +30,10 @@ def edit_element_ref_wind(tags):
     return tags
 
 def edit_element_ref_pv(tags):
-    if tags.get(gensource) != (solar):
+    if tags.get(gensource) != (solar) and tags.get(plantsource) != (solar):
         #print("source not matching nothing done")
         return tags
-    if tags.get(genmethod) != (pv):
+    if tags.get(genmethod) != (pv) and tags.get(plantmethod) != (pv):
         #print("method not matching nothing done")
         return tags
     if tags.get(ref) and re.match(r'E[-0-9a-zA-Z]{32}$', tags.get(ref)) and not refEEG in tags:

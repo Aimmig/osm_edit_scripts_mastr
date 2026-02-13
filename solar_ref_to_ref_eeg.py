@@ -11,7 +11,8 @@ def main():
 [out:xml][timeout:25000];
 area["name"="Deutschland"]->.boundaryarea;
 (
-  nwr(area.boundaryarea)["ref"~"^E[-0-9a-zA-Z]{32}"]["generator:source"="solar"]["generator:method"="photovoltaic"];
+  nwr(area.boundaryarea)["ref"~"^E[-0-9a-zA-Z]{32}$"]["generator:source"="solar"]["generator:method"="photovoltaic"];
+  nwr(area.boundaryarea)["ref"~"^E[-0-9a-zA-Z]{32}$"]["plant:source"="solar"]["plant:method"="photovoltaic"];
 );
 out body;
 >;
