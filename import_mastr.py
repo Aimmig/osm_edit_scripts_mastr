@@ -34,7 +34,7 @@ def edit_element_import_ref_mastr(tags, url):
 
 
 def main():
-    file = "xyz.csv"
+    file = "test_rlp_sample.csv"
     read_csv_to_pandas(file)
     run_simple_retagging_task(
         max_count_of_elements_in_one_changeset=25,
@@ -54,6 +54,8 @@ out skel qt;
         discussion_url='TO-DO',
         osm_wiki_documentation_page='TO-DO',
         edit_element_function=edit_element_import_ref_mastr,
+        source="Marktstammdatenregister Bundesnetzagentur",
+        other_tags_dict = { "cases_where_human_help_is_required": "",},
     )
 
 main()

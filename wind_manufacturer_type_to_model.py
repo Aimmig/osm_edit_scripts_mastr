@@ -21,6 +21,7 @@ out skel qt;
         discussion_url='https://community.openstreetmap.org/t/import-marktstammdatenregister-data-for-wind-power-plants/140622/36',
         osm_wiki_documentation_page='https://wiki.openstreetmap.org/wiki/Mechanical_Edits/onterof_mastr_bot/migrate_manufacturer_type_to_model_wind_plants_germany',
         edit_element_function=edit_element_man,
+        other_tags_dict = { "cases_where_human_help_is_required": "",},
     )
 
 main()
