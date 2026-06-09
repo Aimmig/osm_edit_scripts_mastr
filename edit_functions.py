@@ -6,6 +6,7 @@ plantsource = 'plant:source'
 genmethod = 'generator:method'
 plantmethod = 'plant:method'
 ref = 'ref'
+refmastr = 'ref:mastr'
 refEEG = 'ref:EEG'
 wind = "wind"
 turbine = "wind_turbine"
@@ -60,3 +61,31 @@ def edit_element_man(tags):
         tags.pop(mantype, None)
         return tags
     return tags
+
+
+
+# read pre-computed mastr data
+# Should at least contain the node_id and ref for import
+# or ref:EEG and ref:mastr for conversion
+def read_csv_to_pandas(file):
+    global mastr_data
+    mastr_data = pd.read_csv(file, dtype=str)
+
+# helper function to extract only the node id from url
+def get_node_id(url):
+    return url.split("/")[-1].strip()
+
+def edit_element_import_ref_mastr(tags, url):
+    if tags.get(gensource) != (wind):
+        return tags
+    if tags.get(genmethod) != (turbine):
+        return tags
+    if refmastr in tags:
+        return tags
+    node_id = get_node_id(url)
+    if not node_id in mastr_data['id'].values:
+        return tags
+    else:
+        ref_mastr = mastr_data.query('id==@node_id')["ref:mastr_mastr"].values[0]
+        tags[refmastr] = ref_mastr
+        return tags
