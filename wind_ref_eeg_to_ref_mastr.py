@@ -20,7 +20,7 @@ def main():
 [out:xml][timeout:25000];
 area["name"="name"="Deutschland"]->.boundaryarea;
 (
-  nw(area.boundaryarea)["generator:source"="wind"];
+  nw(area.boundaryarea)["ref:EEG"~"^E[-0-9a-zA-Z]{32}"]["generator:source"="wind"];
 );
 out body;
 >;
