@@ -1,5 +1,7 @@
 import re
 import inspect
+import global_mastr
+import pandas as pd
 
 gensource = 'generator:source'
 plantsource = 'plant:source'
@@ -15,6 +17,11 @@ pv = "photovoltaic"
 mantype = 'manufacturer:type'
 model = 'model'
 
+
+# read pre-computed mastr data
+# Should at least contain the node_id and ref
+def read_csv_to_pandas(file):
+    global_mastr.data = pd.read_csv(file, dtype=str)
 
 def edit_element_ref_wind(tags):
     if tags.get(gensource) != (wind):
@@ -74,10 +81,10 @@ def edit_element_import_ref_mastr(tags, url):
     if refmastr in tags:
         return tags
     node_id = get_node_id(url)
-    if not node_id in mastr_data['id'].values:
+    if not node_id in global_mastr.data['id'].values:
         return tags
     else:
-        ref_mastr = mastr_data.query('id==@node_id')["ref:mastr_mastr"].values[0]
+        ref_mastr = global_mastr.data.query('id==@node_id')["ref:mastr_mastr"].values[0]
         tags[refmastr] = ref_mastr
         return tags
 
@@ -95,12 +102,11 @@ def edit_element_ref_eeg_to_mastr(tags):
     if tags.get(refEEG) and re.match(r'E[-0-9a-zA-Z]{32}$', tags.get(refEEG)):
         print("possibly updating tag")
         ref_eeg = tags.get(refEEG)
-        if ref_eeg in mastr_data[refEEG].values:
+        if ref_eeg in global_mastr.data['ref_EEG'].values:
             print("really upate tag")
-            # TO-DO
-            # ref_mastr = mastr_data.query('id==@node_id')["ref:mastr_mastr"].values[0]
-            # tags[refmastr] = ref_mastr
-            # tags.pop(refEEG, None)
+            ref_mastr = global_mastr.data.query('ref_EEG==@ref_eeg')["ref:mastr"].values[0]
+            tags[refmastr] = ref_mastr
+            tags.pop(refEEG, None)
             return tags
         else:
             return tags

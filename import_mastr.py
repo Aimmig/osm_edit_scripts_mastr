@@ -1,15 +1,6 @@
 from osm_bot_abstraction_layer.generic_bot_retagging import run_simple_retagging_task
 from edit_functions import edit_element_import_ref_mastr
-import pandas as pd
-
-mastr_data = None
-
-# read pre-computed mastr data
-# Should at least contain the node_id and ref
-def read_csv_to_pandas(file):
-    global mastr_data
-    mastr_data = pd.read_csv(file, dtype=str)
-
+from edit_functions import read_csv_to_pandas
 
 def main():
     file = "test_rlp_sample.csv"
