@@ -62,15 +62,6 @@ def edit_element_man(tags):
         return tags
     return tags
 
-
-
-# read pre-computed mastr data
-# Should at least contain the node_id and ref for import
-# or ref:EEG and ref:mastr for conversion
-def read_csv_to_pandas(file):
-    global mastr_data
-    mastr_data = pd.read_csv(file, dtype=str)
-
 # helper function to extract only the node id from url
 def get_node_id(url):
     return url.split("/")[-1].strip()
