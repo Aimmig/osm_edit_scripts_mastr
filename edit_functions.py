@@ -80,3 +80,29 @@ def edit_element_import_ref_mastr(tags, url):
         ref_mastr = mastr_data.query('id==@node_id')["ref:mastr_mastr"].values[0]
         tags[refmastr] = ref_mastr
         return tags
+
+def edit_element_ref_eeg_to_mastr(tags):
+    if tags.get(gensource) != (wind):
+        #print("source not matching nothing done")
+        return tags
+    if tags.get(genmethod) != (turbine):
+        #print("method not matching nothing done")
+        return tags
+    if refmastr in tags:
+        return tags
+    if not refEEG in tags:
+        return tags
+    if tags.get(refEEG) and re.match(r'E[-0-9a-zA-Z]{32}$', tags.get(refEEG)):
+        print("possibly updating tag")
+        ref_eeg = tags.get(refEEG)
+        if ref_eeg in mastr_data[refEEG].values:
+            print("really upate tag")
+            # TO-DO
+            # ref_mastr = mastr_data.query('id==@node_id')["ref:mastr_mastr"].values[0]
+            # tags[refmastr] = ref_mastr
+            # tags.pop(refEEG, None)
+            return tags
+        else:
+            return tags
+        return tags
+    return tags
