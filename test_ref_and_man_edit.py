@@ -1,5 +1,5 @@
 import inspect
-from edit_functions import *
+from edit_functions import edit_element_man, edit_element_ref_pv
 
 def create_test_list():
     w = {gensource:"winde",genmethod:turbine, mantype: 'E-111'} 

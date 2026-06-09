@@ -1,5 +1,5 @@
 from osm_bot_abstraction_layer.generic_bot_retagging import run_simple_retagging_task
-from edit_functions import *
+from edit_functions import edit_element_man
 
 def main():
     run_simple_retagging_task(

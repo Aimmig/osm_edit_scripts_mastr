@@ -1,5 +1,5 @@
 from osm_bot_abstraction_layer.generic_bot_retagging import run_simple_retagging_task
-from edit_functions import *
+from edit_functions import edit_element_ref_pv
 
 #  nwr(area.boundaryarea)["ref:eeg"~"^E[-0-9a-zA-Z]{32}"]["plant:source"="solar"]["plant:method"="photovoltaic"];
 #  nwr(area.boundaryarea)["ref:eeg"~"^E[-0-9a-zA-Z]{32}"]["generator:source"="solar"]["generator:method"="photovoltaic"];
