@@ -1,4 +1,4 @@
-osm_bot_abstraction_layer/*
+osm_bot_abstraction_layer
 env/*
 secret*
 *.csv
