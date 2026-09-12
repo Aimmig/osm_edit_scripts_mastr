@@ -19,12 +19,15 @@ out skel qt;
 """,
         cache_folder_filepath='/tmp',
         is_in_manual_mode=True,
-        changeset_comment='TO-DO ... Import ref:mastr für WKA wenn TO-DO übereinstimmt',
-        discussion_url='TO-DO',
-        osm_wiki_documentation_page='TO-DO',
+        changeset_comment='RLP: Import ref:mastr for wind turbines based on matching start_date',
+        discussion_url='https://community.openstreetmap.org/t/import-marktstammdatenregister-data-for-wind-power-plants/140622',
+        osm_wiki_documentation_page='https://wiki.openstreetmap.org/wiki/Mechanical_Edits/onterof_mastr_bot/import_ref_mastr_wind_plants_DE',
         edit_element_function=edit_element_import_ref_mastr,
         source="Marktstammdatenregister Bundesnetzagentur",
-        other_tags_dict = { "cases_where_human_help_is_required": "",},
+        other_tags_dict = { "cases_where_human_help_is_required": "",
+                           "source:license": "Deutschlandlizenz By-2.0",
+                           "source:url": "https://www.marktstammdatenregister.de/MaStR",
+                           },
     )
 
 main()
