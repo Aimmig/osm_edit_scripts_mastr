@@ -100,10 +100,10 @@ def edit_element_ref_eeg_to_mastr(tags):
     if not refEEG in tags:
         return tags
     if tags.get(refEEG) and re.match(r'E[-0-9a-zA-Z]{32}$', tags.get(refEEG)):
-        print("possibly updating tag")
+        # print("possibly updating tag")
         ref_eeg = tags.get(refEEG)
         if ref_eeg in global_mastr.data['ref_EEG'].values:
-            print("really upate tag")
+            # print("really upate tag")
             ref_mastr = global_mastr.data.query('ref_EEG==@ref_eeg')["ref:mastr"].values[0]
             tags[refmastr] = ref_mastr
             tags.pop(refEEG, None)

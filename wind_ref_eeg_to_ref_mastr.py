@@ -7,12 +7,13 @@ def main():
     file = "REF_EEG_MASTR.csv"
     read_csv_to_pandas(file)
     run_simple_retagging_task(
-        max_count_of_elements_in_one_changeset=25,
+        max_count_of_elements_in_one_changeset=40,
         objects_to_consider_query="""
 [out:xml][timeout:25000];
 area["name"="Deutschland"]->.boundaryarea;
 (
   nw(area.boundaryarea)["ref:EEG"~"^E[-0-9a-zA-Z]{32}"]["generator:source"="wind"];
+  nw(area.boundaryarea)["ref:EEG"~"^E[-0-9a-zA-Z]{32}"]["generator:method"="wind_turbine"];
 );
 out body;
 >;
